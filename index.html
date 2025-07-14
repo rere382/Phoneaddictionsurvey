@@ -5,80 +5,156 @@
   <title>📱 Teen Phone Addiction Survey</title>
   <style>
     body {
-      background: #1a1a2e;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
       color: #eaeaea;
-      font-family: 'Arial', sans-serif;
-      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 30px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      max-width: 700px;
+      width: 100%;
+      background: #0f3460;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 200, 255, 0.5);
     }
     h1 {
       text-align: center;
       color: #00c8ff;
-      font-size: 2.5em;
-      margin-bottom: 0.2em;
+      font-size: 2.8em;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+      text-shadow: 0 0 8px #00c8ff;
     }
     form {
-      max-width: 600px;
-      margin: auto;
-      background: #16213e;
-      padding: 20px;
-      border-radius: 10px;
+      margin-top: 20px;
     }
     .question {
-      margin-bottom: 1.5em;
+      margin-bottom: 1.8em;
     }
-    .question h2 {
+    .question label {
       font-size: 1.2em;
-      color: #fffffe;
+      font-weight: 600;
+      color: #ffffffcc;
+      display: block;
+      margin-bottom: 8px;
+    }
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+      outline: none;
+      background: #16213e;
+      color: #eaeaea;
+      box-shadow: inset 0 0 8px #001f3f;
+      transition: box-shadow 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    select:focus,
+    textarea:focus {
+      box-shadow: 0 0 12px #00c8ff;
+      background: #0b1226;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .options {
+      margin-top: 6px;
     }
     .options label {
       display: block;
-      margin: 8px 0;
-      font-size: 1.1em;
+      font-weight: 500;
       cursor: pointer;
+      margin: 6px 0;
+      color: #a3cef1;
+      user-select: none;
+      font-size: 1.1em;
     }
-    .options input {
+    .options input[type="radio"],
+    .options input[type="checkbox"] {
       margin-right: 10px;
-    }
-    textarea {
-      width: 100%;
-      padding: 8px;
-      border-radius: 5px;
-      border: none;
-      resize: vertical;
+      accent-color: #00c8ff;
+      cursor: pointer;
     }
     button {
       display: block;
-      margin: 20px auto;
-      padding: 12px 24px;
-      font-size: 1.2em;
-      color: #1a1a2e;
+      width: 100%;
+      padding: 15px 0;
+      font-size: 1.4em;
+      font-weight: 700;
+      color: #0f3460;
       background: #00c8ff;
       border: none;
-      border-radius: 30px;
+      border-radius: 40px;
       cursor: pointer;
-      transition: background 0.3s;
+      box-shadow: 0 0 20px #00c8ff;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 30px;
     }
     button:hover {
       background: #00a3cc;
+      box-shadow: 0 0 30px #00a3cc;
     }
   </style>
 </head>
 <body>
-  <h1>📱 Teen Phone Addiction Pulse Check</h1>
-<form action=https://formspree.io/f/xpwlanyb 
-  <label for="name">Name:</label><br>
-  <input type="text" id="name" name="name" required><br><br>
-
-  <label for="age">Age:</label><br>
-  <input type="number" id="age" name="age" required><br><br>
-
-  <label for="screenTime">Hours on phone per day:</label><br>
-  <input type="text" id="screenTime" name="screenTime" required><br><br>
-
-  <label for="feedback">Comments:</label><br>
-  <textarea id="feedback" name="feedback"></textarea><br><br>
-
-  <button type="submit">Submit</button>
-</form>
+  <div class="container">
+    <h1>📱 Teen Phone Addiction Survey</h1>
+    <form action="https://formspree.io/f/xpwlanyb" method="POST">
+      <div class="question">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div class="question">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="10" max="99" required />
+      </div>
+      <div class="question">
+        <label for="screenTime">How many hours per day do you spend on your phone?</label>
+        <select id="screenTime" name="screenTime" required>
+          <option value="" disabled selected>Select one</option>
+          <option value="Less than 1 hour">Less than 1 hour</option>
+          <option value="1-3 hours">1-3 hours</option>
+          <option value="4-6 hours">4-6 hours</option>
+          <option value="7-9 hours">7-9 hours</option>
+          <option value="More than 9 hours">More than 9 hours</option>
+        </select>
+      </div>
+      <div class="question">
+        <label>What activities do you usually do on your phone? (Select all that apply)</label>
+        <div class="options">
+          <label><input type="checkbox" name="activities" value="Social Media" /> Social Media</label>
+          <label><input type="checkbox" name="activities" value="Gaming" /> Gaming</label>
+          <label><input type="checkbox" name="activities" value="Watching Videos" /> Watching Videos</label>
+          <label><input type="checkbox" name="activities" value="Messaging" /> Messaging</label>
+          <label><input type="checkbox" name="activities" value="Studying" /> Studying</label>
+          <label><input type="checkbox" name="activities" value="Other" /> Other</label>
+        </div>
+      </div>
+      <div class="question">
+        <label>Do you feel addicted to your phone?</label>
+        <div class="options">
+          <label><input type="radio" name="addicted" value="Yes" required /> Yes</label>
+          <label><input type="radio" name="addicted" value="No" /> No</label>
+          <label><input type="radio" name="addicted" value="Sometimes" /> Sometimes</label>
+        </div>
+      </div>
+      <div class="question">
+        <label for="feedback">Any comments or suggestions?</label>
+        <textarea id="feedback" name="feedback" placeholder="Write here..."></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 </body>
 </html>
+
